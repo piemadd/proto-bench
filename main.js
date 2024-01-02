@@ -3,6 +3,9 @@ import * as syncMaps from '@mapbox/mapbox-gl-sync-move'; //syncing map movement
 import * as pmtiles from "pmtiles"; //pmtiles stuff
 import layers from 'protomaps-themes-base'; //styling
 
+//bullshit because syncMaps is cjs or something so it breaks in prod...thanks js
+const actualSyncMaps = syncMaps.default ?? syncMaps;
+
 //css
 import './node_modules/maplibre-gl/dist/maplibre-gl.css';
 import './node_modules/@maplibre/maplibre-gl-compare/dist/maplibre-gl-compare.css';
@@ -50,7 +53,7 @@ self.addEventListener("fetch", (event) => {
 //variables for setup
 const initialCoords = [-87.63081155037817, 41.881198583190304];
 const initialZoom = 10;
-const mapLayers = layers('protomaps', 'debug');
+const mapLayers = layers('protomaps', 'dark');
 
 //map powered by workers
 const workersMap = new maplibregl.Map({
@@ -121,7 +124,7 @@ r2Map.on('sourcedata', (e) => {
   buildLog(e, r2Logger);
 })
 
-syncMaps(workersMap, r2Map);
+actualSyncMaps(workersMap, r2Map);
 
 console.log('Both maps are exposed as the variables \'workers\' (left) and \'r2\' (right) respectively');
 console.log('workers', workers)
