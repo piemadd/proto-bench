@@ -1,0 +1,45 @@
+html, body, main#comparison-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+main#comparison-container {
+  display: flex;
+  gap: 1px;
+}
+
+main#comparison-container section.map-holder {
+  width: 50%;
+  height: 100%;
+}
+
+
+section.map-holder div.maplibregl-map {
+  width: 100%;
+  height: calc(100% - 250px);
+}
+
+section.map-holder div.logger {
+  width: 100%;
+  height: 250px;
+  color: #eee;
+  background-color: #1a1a1a;
+  overflow-y: hidden;
+}
+
+span.coord {
+  color: #47af28;
+}
+
+span.size { 
+  color: #af2828;
+}
+
+span.time {
+  color: #285eaf;
+}
